@@ -4,7 +4,8 @@
 	$db = ["name", "modelname", "generationname", "seriename", "trimname"];
 	
 	$kind = $_GET["kind"];
-	$path = explode("#", urldecode($_GET["path"]));
+	$path = explode("#", utf8_decode(urldecode($_GET["path"])));
+
 	$stage = sizeof($path);
 	if ($_GET["path"] == "") {
 		$stage = 0;
@@ -63,19 +64,22 @@
 						$where = " WHERE make.name = '" . $path[0] . "' " . $where;
 				}
 				$sql = $select . $from . $where . "GROUP BY " . $db[$stage];
+
+				
 			}
 			
-			$res = mysqli_query($link, utf8_decode($sql));
-			echo $sql;
+			$res = mysqli_query($link, $sql);
 			while ($row = mysqli_fetch_array($res)) {  
-				$value = $row[$db[$stage]];
-				$utf_value = utf8_encode($value);
+				$value = utf8_encode($row[$db[$stage]]);
+				$year_value = $value;
 				if ($stage == 2) {
-					$utf_value .= " (" . $row["begin"] . "-" . $row["end"] . ")";
+					$year_value .= " (" . $row["begin"] . "-" . $row["end"] . ")";
 				}
-				echo "<option value='$value'>$utf_value</option>";
+				echo "<option value='$value'>$year_value</option>";
 			} 
+			
 		}
+		
 		?>
 	</select>
 </div>
@@ -84,4 +88,6 @@
 	<div id="<?php echo "car-selection-container-stage" . ($stage + 1); ?>">
 		<!-- AJAX: next select -->
 	</div>
-<?php } ?>
+<?php }
+
+ ?>

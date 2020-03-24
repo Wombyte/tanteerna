@@ -34,7 +34,12 @@
 				}else{
 					for($i = 0; $i < count($barray); $i++){
 						$temp = explode("#", $barray[$i]);
-						$entrylen = count($temp);		
+						$entrylen = count($temp);
+                                               $temp[0] = utf8_decode($temp[0]);		
+                                               $temp[1] = utf8_decode($temp[1]);		
+                                               $temp[2] = utf8_decode($temp[2]);		
+                                               $temp[3] = utf8_decode($temp[3]);		
+                                               $temp[4] = utf8_decode($temp[4]);		
 						switch($entrylen){
 							
 							case 1:	$sql="INSERT INTO a_p_beziehung (produkt_fk, fahrzeugtyp, marke) 
@@ -49,12 +54,13 @@
 							case 4:	$sql="INSERT INTO a_p_beziehung (produkt_fk, fahrzeugtyp, marke, modell, generation, reihe) 
 														VALUES ($id, 'PKW', '$temp[0]', '$temp[1]', '$temp[2]', '$temp[3]');";
 									break;
-							case 5:	$sql="INSERT INTO a_p_beziehung (produkt_fk, fahrzeugtyp, marke, modell, generation, modifikation) 
+							case 5:	$sql="INSERT INTO a_p_beziehung (produkt_fk, fahrzeugtyp, marke, modell, generation, reihe, modifikation) 
 														VALUES ($id, 'PKW', '$temp[0]', '$temp[1]', '$temp[2]', '$temp[3]', '$temp[4]');";
 									break;
 							default: echo "Error500";
 						}
 						$res=mysqli_query($link, $sql);
+                                                
 					}
 					$_SESSION['EGL'] = "set";
 									

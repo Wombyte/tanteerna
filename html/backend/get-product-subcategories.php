@@ -7,7 +7,7 @@
 		$sql = "SELECT DISTINCT hauptkategorie FROM kategorien;";
 		echo "<option value=''>Auswählen</option>";
 	} else {
-		$sql = "SELECT DISTINCT nebenkategorie FROM kategorien WHERE hauptkategorie='" . urldecode($_GET["item"]) . "';";
+		$sql = "SELECT DISTINCT nebenkategorie FROM kategorien WHERE hauptkategorie='" . utf8_decode($_GET["item"]) . "';";
 		echo "<option value=''>Auswählen</option>";
 	}
 	$res = mysqli_query($link, $sql);
