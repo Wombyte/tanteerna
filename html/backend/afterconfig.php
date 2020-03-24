@@ -63,10 +63,13 @@
 					$Preis = $_POST['Preis'];
 					$Plink = $_POST['Plink'];
 					$Pbeschreibung = $_POST['Pbeschreibung'];
-					/*
-					$link = mysqli_connect("localhost","web26762838","mlVIPbDT");
-					mysqli_select_db($link, "usr_web26762838_1");
-					*/
+					
+                                       echo $Pname;
+                                       $Pname = utf8_decode($Pname);
+$Plink = utf8_decode($Plink);
+$Pbeschreibung = utf8_decode($Pbeschreibung);
+
+
 					$link = mysqli_connect("localhost","web26762838","mlVIPbDT");
 					mysqli_select_db($link, "usr_web26762838_1");
 					
@@ -95,7 +98,7 @@
 						$temp = explode("#", $barray[$i]);
 						
 						$entrylen = count($temp);		
-						echo var_dump($barray);
+						
 						
 						switch($entrylen){
 							
@@ -111,7 +114,7 @@
 							case 4:	$sql="INSERT INTO a_p_beziehung (produkt_fk, fahrzeugtyp, marke, modell, generation, reihe) 
 														VALUES ($id, 'PKW', '$temp[0]', '$temp[1]', '$temp[2]', '$temp[3]');";
 									break;
-							case 5:	$sql="INSERT INTO a_p_beziehung (produkt_fk, fahrzeugtyp, marke, modell, generation, modifikation) 
+							case 5:	$sql="INSERT INTO a_p_beziehung (produkt_fk, fahrzeugtyp, marke, modell, generation, reihe,  modifikation) 
 														VALUES ($id, 'PKW', '$temp[0]', '$temp[1]', '$temp[2]', '$temp[3]', '$temp[4]');";
 									break;
 							default: echo "Error500";
@@ -126,30 +129,33 @@
 					
 					$Hauptkategorie = $_POST['Hauptkategorie'];
 					$Nebenkategorie = $_POST['Nebenkategorie'];
+
+                                       $Hauptkategorie = utf8_decode( $Hauptkategorie);
+                                       $Nebenkategorie = utf8_decode( $Nebenkategorie);
 					
 					if (isset($_POST["Hione"])) {
-						$Hione = $_POST['Hione'];
+						$Hione = utf8_decode($_POST['Hione']);
 					}
 					if (isset($_POST["Hitwo"])) {
-						$Hitwo = $_POST['Hitwo'];
+						$Hitwo = utf8_decode($_POST['Hitwo']);
 					}
 					if (isset($_POST["Hithree"])) {
-						$Hithree = $_POST['Hithree'];
+						$Hithree = utf8_decode($_POST['Hithree']);
 					}
 					if (isset($_POST["Hifive"])) {
-						$Hifive = $_POST['Hifive'];
+						$Hifive = utf8_decode($_POST['Hifive']);
 					}
 					if (isset($_POST["Hisix"])) {
-						$Hisix = $_POST['Hisix'];
+						$Hisix = utf8_decode($_POST['Hisix']);
 					}
 					if (isset($_POST["Hiseven"])) {
-						$Hiseven = $_POST['Hiseven'];
+						$Hiseven = utf8_decode($_POST['Hiseven']);
 					}
 					if (isset($_POST["Hieight"])) {
-						$Hieight = $_POST['Hieight'];
+						$Hieight = utf8_decode($_POST['Hieight']);
 					}
 					if (isset($_POST["Hifour"])) {
-						$Hifour = $_POST['Hifour'];
+						$Hifour = utf8_decode($_POST['Hifour']);
 					}
 					
 					/*

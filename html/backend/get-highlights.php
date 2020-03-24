@@ -8,7 +8,8 @@
 	$link = mysqli_connect("localhost","web26762838","mlVIPbDT");
 	mysqli_select_db($link, "usr_web26762838_1");
 	$sql = "SELECT * FROM highlights INNER JOIN kategorien ON highlights.h_id = kategorien.highlight_fk
-						WHERE hauptkategorie = '$HK' AND nebenkategorie = '$NK' ;";
+						WHERE hauptkategorie = '". utf8_decode($HK) ."' AND nebenkategorie = '". utf8_decode($NK) ."' ;";
+			
 			
 	$res=mysqli_query($link, $sql);
 	

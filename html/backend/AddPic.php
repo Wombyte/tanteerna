@@ -1,5 +1,5 @@
 <?php
-	session_start();
+       session_start();
 ?>
 
 <html lang="en">
@@ -81,6 +81,7 @@
 				<br>
 				<p>Das Bild sollte folgende Eigenschaften besitzen</p>
 				<ul>
+                                        <li> <b>Um ein Produkt zu erstellen, MUSS ein Bild hochgeladen werden.</b></li>
 					<li>Format: png oder jpg/jpeg</li>
 					<li>Maximalgröße: 6MB</li>
 					<li>Auflösung: gut bis sehr gut</li>
@@ -91,13 +92,17 @@
 				</form>
 		</div>
 				<?php
+                              
 					if(isset($_POST["submit"])){
 						$randomOne= chr( mt_rand( 97 , 122 ) );
 						$randomTwo= chr( mt_rand( 97 , 122 ) );
 						$randomThree= chr( mt_rand( 97 , 122 ) );
 						$randomEnd = $randomOne . $randomTwo . $randomThree;
-						$zielpfad="../../media/images/products/";
+						$zielpfad="../../media/images/products/"; 
+                                              
+                                             
 						$filename = $randomEnd . basename($_FILES["Picture"]["name"]);
+
 						$zieldatei= $zielpfad . $filename;
 						$error = 0;
 						$endung = strtoupper(pathinfo($zieldatei, PATHINFO_EXTENSION));
@@ -127,14 +132,29 @@
 							$sub = 0;
 							$Anbietername = $_SESSION['backmind'];
 							$link = mysqli_connect("localhost","web26762838","mlVIPbDT");
-							mysqli_select_db($link, "usr_web26762838_1");
+				mysqli_select_db($link, "usr_web26762838_1");
+				
 							
 							$delete = "DELETE FROM produkt WHERE Produktname = '$Pname' AND Beschreibung = '$Pbeschreibung' 
 															AND Anbieter = '$Anbietername' AND Preis = '$Preis'
 															AND Produktlink = '$Plink' ;";
 															
 							$del=mysqli_query($link, $delete);
-							
+                                                        $Pname = utf8_decode($Pname);
+                                                        $filename = utf8_decode($filename);
+                                                        $Anbietername = utf8_decode($Anbietername);
+                                                        $Hauptkategorie = utf8_decode($Hauptkategorie);
+                                                        $Nebenkategorie = utf8_decode($Nebenkategorie);
+  $Plink = utf8_decode($Plink);
+							$Pbeschreibung = utf8_decode($Pbeschreibung);
+                                                        $Hione = utf8_decode($Hione);
+$Hitwo = utf8_decode($Hitwo);
+$Hithree = utf8_decode($Hithree);
+$Hifour = utf8_decode($Hifour);
+$Hifive = utf8_decode($Hifive);
+$Hisix = utf8_decode($Hisix);
+$Hiseven = utf8_decode($Hiseven);
+$Hieigth = utf8_decode($Hieigth);
 							$sql = "INSERT INTO produkt (Produktname, Produktbild, Beschreibung, Anbieter,
 														Preis, Kategorie, Unterkategorie, Produktlink,
 														Heins, Hzwei, Hdrei, Hvier, Hfuenf, Hsechs, Hsieben, Hacht) 
@@ -161,8 +181,106 @@
 						}
 					}
 					else{
-						echo $endung . $error . "Fehler bei der Eingabe! Achten sie auf die vorgegebenen EIgenschaften und Versuchen sie es erneut!";
+						$filename = "vaf2019-08-09_09h30_48.png";
+							
+							$sub = 0;
+							$Anbietername = $_SESSION['backmind'];
+							$link = mysqli_connect("localhost","web26762838","mlVIPbDT");
+				mysqli_select_db($link, "usr_web26762838_1");
+				
+							
+							$delete = "DELETE FROM produkt WHERE Produktname = '$Pname' AND Beschreibung = '$Pbeschreibung' 
+															AND Anbieter = '$Anbietername' AND Preis = '$Preis'
+															AND Produktlink = '$Plink' ;";
+															
+							$del=mysqli_query($link, $delete);
+                                                        $Pname = utf8_decode($Pname);
+                                                        $filename = utf8_decode($filename);
+                                                        $Anbietername = utf8_decode($Anbietername);
+                                                        $Hauptkategorie = utf8_decode($Hauptkategorie);
+                                                        $Nebenkategorie = utf8_decode($Nebenkategorie);
+							$Plink = utf8_decode($Plink);
+							$Pbeschreibung = utf8_decode($Pbeschreibung);
+ $Hione = utf8_decode($Hione);
+$Hitwo = utf8_decode($Hitwo);
+$Hithree = utf8_decode($Hithree);
+$Hifour = utf8_decode($Hifour);
+$Hifive = utf8_decode($Hifive);
+$Hisix = utf8_decode($Hisix);
+$Hiseven = utf8_decode($Hiseven);
+$Hieigth = utf8_decode($Hieigth);
+
+							$sql = "INSERT INTO produkt (Produktname, Produktbild, Beschreibung, Anbieter,
+														Preis, Kategorie, Unterkategorie, Produktlink,
+														Heins, Hzwei, Hdrei, Hvier, Hfuenf, Hsechs, Hsieben, Hacht) 
+														VALUES 
+														('$Pname','$filename','$Pbeschreibung','$Anbietername'
+														,'$Preis','$Hauptkategorie','$Nebenkategorie','$Plink',
+														'$Hione','$Hitwo','$Hithree','$Hifour',
+														'$Hifive','$Hisix','$Hiseven','$Hieight');";
+														
+							$res=mysqli_query($link, $sql);
+							/* gestern abend*/
+							$sql = "SELECT * FROM produkt WHERE Produktname = '$Pname' AND Produktbild = '$filename'
+																AND Beschreibung = '$Pbeschreibung' 
+																AND Produktlink = '$Plink';";
+							
+							$res = mysqli_query($link, $sql);
+							$que = mysqli_fetch_array($res);
+							$_SESSION['user_id'] = $que['ID'];	
 					}
+					}
+				
+				
+					else{
+							$filename = "vaf2019-08-09_09h30_48.png";
+							
+							$sub = 0;
+							$Anbietername = $_SESSION['backmind'];
+							$link = mysqli_connect("localhost","web26762838","mlVIPbDT");
+				mysqli_select_db($link, "usr_web26762838_1");
+				
+							
+							$delete = "DELETE FROM produkt WHERE Produktname = '$Pname' AND Beschreibung = '$Pbeschreibung' 
+															AND Anbieter = '$Anbietername' AND Preis = '$Preis'
+															AND Produktlink = '$Plink' ;";
+															
+							$del=mysqli_query($link, $delete);
+                                                        $Pname = utf8_decode($Pname);
+                                                        $filename = utf8_decode($filename);
+                                                        $Anbietername = utf8_decode($Anbietername);
+                                                        $Hauptkategorie = utf8_decode($Hauptkategorie);
+                                                        $Nebenkategorie = utf8_decode($Nebenkategorie);
+							$Plink = utf8_decode($Plink);
+
+   $Hione = utf8_decode($Hione);
+$Hitwo = utf8_decode($Hitwo);
+$Hithree = utf8_decode($Hithree);
+$Hifour = utf8_decode($Hifour);
+$Hifive = utf8_decode($Hifive);
+$Hisix = utf8_decode($Hisix);
+$Hiseven = utf8_decode($Hiseven);
+$Hieigth = utf8_decode($Hieigth);
+							
+$Pbeschreibung = utf8_decode($Pbeschreibung);
+							$sql = "INSERT INTO produkt (Produktname, Produktbild, Beschreibung, Anbieter,
+														Preis, Kategorie, Unterkategorie, Produktlink,
+														Heins, Hzwei, Hdrei, Hvier, Hfuenf, Hsechs, Hsieben, Hacht) 
+														VALUES 
+														('$Pname','$filename','$Pbeschreibung','$Anbietername'
+														,'$Preis','$Hauptkategorie','$Nebenkategorie','$Plink',
+														'$Hione','$Hitwo','$Hithree','$Hifour',
+														'$Hifive','$Hisix','$Hiseven','$Hieight');";
+														
+							$res=mysqli_query($link, $sql);
+							/* gestern abend*/
+							$sql = "SELECT * FROM produkt WHERE Produktname = '$Pname' AND Produktbild = '$filename'
+																AND Beschreibung = '$Pbeschreibung' 
+																AND Produktlink = '$Plink';";
+							
+							$res = mysqli_query($link, $sql);
+							$que = mysqli_fetch_array($res);
+							$_SESSION['user_id'] = $que['ID'];	
 					}
 				?>
 				<br>

@@ -23,18 +23,18 @@
 		<div class="hauptinfo">
 			<?php
 				$array = [
-					["Leistungsprüfstand", "Heins"]
-					["eigener Shop", "Hzwei"]
-					["Reifenservice", "Hdrei"]
-					["eigene Werkstatt", "Hvier"]
-					["Meisterbetrieb", "Hfuenf"]
-					["Dekra Prüfstelle", "Hsechs"]
-					["Highlight 7", "Hsieben"]
+					["Leistungsprüfstand", "Heins"],
+					["eigener Shop", "Hzwei"],
+					["Reifenservice", "Hdrei"],
+					["eigene Werkstatt", "Hvier"],
+					["Meisterbetrieb", "Hfuenf"],
+					["Dekra Prüfstelle", "Hsechs"],
+					["Highlight 7", "Hsieben"],
 					["Highlight 8", "Hacht"]
 				];
 				
 				$link = mysqli_connect("localhost","web26762838","mlVIPbDT");
-						mysqli_select_db($link, "usr_web26762838_1");
+				mysqli_select_db($link, "usr_web26762838_1");
 				
 				$res=mysqli_query($link, "SELECT * FROM anbieter WHERE anbieter.Firmenname = '$Aname';");														
 				$row = mysqli_fetch_array($res);
@@ -45,23 +45,104 @@
 			<img src="../../media/images/merchant-icons/<?php echo $row["Firmenlogo"]; ?>" height="250px" width="250px" class="firmenlogo">
 			
 			<!-- Hightlight table -->
-			<table><tr>
-				<?php for ($i = 0; i < sizeof($array); $i++) { ?>
+			<table>
+				<tr>
+					<td><ul><li>Leistungsprüfstand:</li></ul></td>
 					<td>
-						<p class="highlight">
-							<?php 
-								echo $array[$i][0];
-								$icon = "../../media/images/misc/";
-								$icon .= ($row[$array[$i][1]] == "ja") ? "haken.png" : "cross.png";
-							?>
-							<img src="<?php echo $icon; ?>" alt="Error404" height="30" width="30" class="right">
-						</p>
+					<?php  
+						if($row["Heins"]=="ja"){
+							echo "<img src='../../media/images/misc/haken.png' alt='Error404' height='30px' width='30px' >";
+						}
+						else{
+							echo "<img src='../../media/images/misc/cross.png' alt='Error404' height='30px' width='30px' >";
+						}
+					?>
 					</td>
-					<?php if ($i % 2 == 1 and $i != (sizeof($array)-1)) { ?>
-						</tr><tr>
-					<?php } ?>
-				<?php } ?>
-			</tr></table>
+					<td><ul><li>Reifenservice:</li></ul></td>
+					<td>
+					<?php  
+						if($row["Hzwei"]=="ja"){
+							echo "<img src='../../media/images/misc/haken.png' alt='Error404' height='30px' width='30px' >";
+						}
+						else{
+							echo "<img src='../../media/images/misc/cross.png' alt='Error404' height='30px' width='30px' >";
+						}
+					?>
+					</td>
+				</tr>
+				<tr>
+					<td><ul><li>eigener Shop:</li></ul></td>
+					<td>
+					<?php  
+						if($row["Hdrei"]=="ja"){
+							echo "<img src='../../media/images/misc/haken.png' alt='Error404' height='30px' width='30px' >";
+						}
+						else{
+							echo "<img src='../../media/images/misc/cross.png' alt='Error404' height='30px' width='30px' >";
+						}
+					?>
+					</td>
+					<td><ul><li>eigene Werkstatt:</li></ul></td>
+					<td>
+					<?php  
+						if($row["Hvier"]=="ja"){
+							echo "<img src='../../media/images/misc/haken.png' alt='Error404' height='30px' width='30px' >";
+						}
+						else{
+							echo "<img src='../../media/images/misc/cross.png' alt='Error404' height='30px' width='30px' >";
+						}
+					?>
+					</td>
+				</tr>
+				<tr>
+					<td><ul><li>Meisterbetrieb:</li></ul></td>
+					<td>
+					<?php  
+						if($row["Hfuenf"]=="ja"){
+							echo "<img src='../../media/images/misc/haken.png' alt='Error404' height='30px' width='30px' >";
+						}
+						else{
+							echo "<img src='../../media/images/misc/cross.png' alt='Error404' height='30px' width='30px' >";
+						}
+					?>
+					</td>
+					<td><ul><li>Dekra Prüfstelle:</li></ul></td>
+					<td>
+					<?php  
+						if($row["Hsechs"]=="ja"){
+							echo "<img src='../../media/images/misc/haken.png' alt='Error404' height='30px' width='30px' >";
+						}
+						else{
+							echo "<img src='../../media/images/misc/cross.png' alt='Error404' height='30px' width='30px' >";
+						}
+					?>
+					</td>
+				</tr>
+				<tr>
+					<td><ul><li>Highlight 7:</li></ul></td>
+					<td>
+					<?php  
+						if($row["Hsieben"]=="ja"){
+							echo "<img src='../../media/images/misc/haken.png' alt='Error404' height='30px' width='30px' >";
+						}
+						else{
+							echo "<img src='../../media/images/misc/cross.png' alt='Error404' height='30px' width='30px' >";
+						}
+					?>
+					</td>
+					<td><ul><li>Highlight 8:</li></ul></td>
+					<td>
+					<?php  
+						if($row["Hacht"]=="ja"){
+							echo "<img src='../../media/images/misc/haken.png' alt='Error404' height='30px' width='30px' >";
+						}
+						else{
+							echo "<img src='../../media/images/misc/cross.png' alt='Error404' height='30px' width='30px' >";
+						}
+					?>
+					</td>
+				</tr>
+			</table>
 					
 			<!-- description -->
 			<br><br><br>
@@ -72,7 +153,7 @@
 			<!-- contact -->
 			<div class="KKAB"></div>	
 			<div class="Kontaktbox">	
-				<img src="placeholder.png" alt="Error404" class="kontaktpngs"> 		
+				<img src="../../media/images/misc/placeholder.png" alt="Error404" class="kontaktpngs"> 		
 				<p class="kontaktps">
 					<?php 
 						echo utf8_encode($row["Strasse"]) . ", " 
@@ -81,23 +162,25 @@
 					?>
 				</p> 	
 				<br><br>	
-				<a href="<?php echo $row["Website"]; ?>" class="kontaktps"><img src="../../media/images/misc/internet.png" alt="Error404" class="kontaktpngs"></a> 
-				<p class="kontaktps">www.MotorFactoryGmbH.de</p>
+				<a href="<?php echo $row["Website"]; ?>" class="kontaktps"><img src="../../media/images/misc/internet.png" alt="Error404" class="kontaktpngs">
+				<p class="kontaktps">www.MotorFactoryGmbH.de</p></a> 
 				<br><br>	
-				<a href="<?php echo $row["Facebook"]; ?>" class="kontaktps"><img src="../../media/images/misc/fb.png" alt="Error404" class="kontaktpngs"> </a> 
-				<p class="kontaktps"> Motor - Factory</p>
+				<a href="<?php echo $row["Facebook"]; ?>" class="kontaktps"><img src="../../media/images/misc/fb.png" alt="Error404" class="kontaktpngs"> 
+				<p class="kontaktps"> Motor - Factory</p></a> 
 				<br><br>
-				<a href="<?php echo $row["Instagram"]; ?>" class="kontaktps"><img src="../../media/images/misc/instagram.png" alt="Error404" class="kontaktpngs"></a> 
-				<p class="kontaktps">MotorFactoryGmbH</p>
+				<a href="<?php echo $row["Instagram"]; ?>" class="kontaktps"><img src="../../media/images/misc/instagram.png" alt="Error404" class="kontaktpngs">
+				<p class="kontaktps">MotorFactoryGmbH</p></a> 
 				<br><br>
-				<a href="<?php echo $row["Youtube"]; ?>" class="kontaktps"><img src="../../media/images/misc/Youtube.png" alt="Error404" class="kontaktpngs"> </a> 
-				<p class="kontaktps">MyMotorFactory</p>
+				<a href="<?php echo $row["Youtube"]; ?>" class="kontaktps"><img src="../../media/images/misc/Youtube.png" alt="Error404" class="kontaktpngs"> 
+				<p class="kontaktps">MyMotorFactory</p></a> 
 				<br>
 			</div>
 			<div class="Kontaktframe">
-				<a href="https://www.google.de/maps/place/L+%26+S+Luddeneit+und+Scherf+GmbH/@50.7384823,11.7346022,16.75z/data=!4m5!3m4!1s0x47a14cbc11314369:0x2051d1c169da9fe7!8m2!3d50.73836!4d11.73729" alt="Error404">	<img src="kontaktmap.png" height="450" width="500"> </a>
+				<a href="https://www.google.de/maps/place/L+%26+S+Luddeneit+und+Scherf+GmbH/@50.7384823,11.7346022,16.75z/data=!4m5!3m4!1s0x47a14cbc11314369:0x2051d1c169da9fe7!8m2!3d50.73836!4d11.73729" alt="Error404">	<img src="../../media/images/maps/MotorFactoryGmbH.png" height="450" width="500"> </a>
 			</div>	
-			<br><br><br><br><br><br><br><br>
+			<br><br><br><br>
+			<br><br><br><br>
+			<br><br><br><br>
 		</div>
 	
 		<?php include('footer.php'); ?>

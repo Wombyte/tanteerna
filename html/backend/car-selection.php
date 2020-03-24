@@ -1,6 +1,5 @@
 <?php
 	session_start();
-	require("../DatabaseConnection.php");
 ?>
 
 <html>
@@ -24,8 +23,11 @@
 				if (isset($_POST["id"])) {
 					$productId = urldecode($_POST["id"]);
 					$nextFile = "afterconfig.php";
+					
+					
 					$link = mysqli_connect("localhost","web26762838","mlVIPbDT");
 					mysqli_select_db($link, "usr_web26762838_1");
+					
 					$car = mysqli_query($link, "SELECT * FROM a_p_beziehung WHERE produkt_fk = '$productId';");
 					while ($new = mysqli_fetch_array($car)) {
 						$array = [
@@ -64,7 +66,7 @@
 						>
 						<div class="fill-width">
 							<input type="hidden" value="<?php echo $productId; ?>" name="id"/>
-							<button class="button-style" id="car-submit-button" name="info" value="cars" onclick="updateHidden();">Anpassen</button>	
+							<button class="button-style" id="car-submit-button" name="info" value="cars" onclick="updateHidden();">Speichern</button>	
 						</div>
 					</form>
 				</div>

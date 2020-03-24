@@ -46,11 +46,11 @@
 						<option value="">Serie</option>
 					</select>
 					<br><br>
-					<select id="trim" name="Trim" onchange="handleSubmitButton(this.value)" class="rundeEcke">
+					<select id="trim" name="Trim" class="rundeEcke">
 						<option value="">Trim</option>
 					</select>
 					<br><br>
-					<input id="submit" type="submit" value="Finde deine Upgrades" class="Buttonstyle" disabled="disabled"></input>
+					<input id="submit" type="submit" value="Finde deine Upgrades" class="Buttonstyle"></input>
 					<br><br>
 					<input type="reset" value="Auswahl zurücksetzen" class="ResetButton"></input>
 				</form>

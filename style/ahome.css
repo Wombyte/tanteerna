@@ -13,7 +13,7 @@
 }
 
 .mittelbox{
-	width: 900px;
+	width: 960px;
 	height: 100%;
 	margin-left: auto;
 	margin-right: auto;
@@ -28,18 +28,29 @@
 }
 
 .gesamtbox{
-	height: 175px;
-	width: 900px;
-	margin-bottom:15px;
-
+	height: 215px;
+	width: 980px;
+	margin-bottom:20px;
 }
 
 .produktbox{
 	height: 175px;
-	width: 800px;
+	width: 860px;
 	border: 2px;	
-	border-style: solid;
-	margin-bottom:1px;
+       margin-left:20px;
+	padding-top: 20px;
+     
+	margin-bottom: 20px;
+	
+}
+
+.grauerRand{
+	background-color: #f2f2f2;
+	border-radius: 20px;
+	height: 215px;
+	width: 900px;
+	margin-left: -10px;
+	margin-bottom: 20px;
 }
 
 .buttonstyle{
@@ -56,7 +67,7 @@
 
 .produktbild{
 	height: 175px;
-	width: 175px;
+	width: 240px;
 	vertical-align: center;
 	float: left;
 	
@@ -65,7 +76,7 @@
 .produktbeschreibung{
 	text-align: left;
 	height: 150px;
-	width: 450px;
+	width: 500px;
 	margin-left: 10px;
 	float: left;
 	margin-top: 12.5px;
@@ -100,7 +111,7 @@
 	height: 175px;
 	width: 100px;
 	float: right;
-	margin-top: -175px;
+	margin-top: -210px;
 }
 /*Sprachliches*/
 
@@ -119,6 +130,7 @@ h4{
 table{
 	border-spacing: 25px 8px;
 	margin-left: 10px;
+	margin-top: -14px;
 }
 
 p{
@@ -129,4 +141,8 @@ p{
 
 .pfuerVerlauf{
 	line-height: 2px;
+}
+
+.imgtop{
+	margin-bottom: -4px;
 }
