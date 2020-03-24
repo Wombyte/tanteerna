@@ -64,12 +64,13 @@ function getDropDownValues(stage) {
 }
 	
 /**
- * disables / enables te subit button depending on the selected version. 
- * If a valid versio is select the submit button is enabled, else not. 
+ * disables / enables the submit button depending on the selected trim. 
+ * If a valid version is select the submit button is enabled, else not. 
  */
-function handleSubmitButton(versionName) {
+function handleSubmitButton() {
+	var trim = document.getElementById("trim").value;
 	var submitButton = document.getElementById("submit");
-	submitButton.disabled = (versionName == "");
+	submitButton.disabled = (trim == "");
 }
 
 /**

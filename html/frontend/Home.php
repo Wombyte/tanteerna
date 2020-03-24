@@ -46,7 +46,7 @@
 						<option value="">Serie</option>
 					</select>
 					<br><br>
-					<select id="trim" name="Trim" class="rundeEcke">
+					<select id="trim" name="Trim" onchange="handleSubmitButton()" class="rundeEcke">
 						<option value="">Trim</option>
 					</select>
 					<br><br>
